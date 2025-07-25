@@ -1,0 +1,3974 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#00a859">
+    <meta name="description" content="محلل كشف الحساب الذكي - البنك الأهلي السعودي">
+    <title>محلل كشف الحساب الذكي | البنك الأهلي السعودي</title>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== Advanced CSS Variables ==================== */
+        :root {
+            /* Primary Colors with Variations */
+            --primary-50: #e8f5e9;
+            --primary-100: #c8e6c9;
+            --primary-200: #a5d6a7;
+            --primary-300: #81c784;
+            --primary-400: #66bb6a;
+            --primary-500: #00a859;
+            --primary-600: #00924d;
+            --primary-700: #007a3d;
+            --primary-800: #00632f;
+            --primary-900: #004d23;
+            
+            /* Semantic Colors */
+            --success-light: #4ade80;
+            --success: #22c55e;
+            --success-dark: #16a34a;
+            
+            --danger-light: #f87171;
+            --danger: #ef4444;
+            --danger-dark: #dc2626;
+            
+            --warning-light: #fbbf24;
+            --warning: #f59e0b;
+            --warning-dark: #d97706;
+            
+            --info-light: #60a5fa;
+            --info: #3b82f6;
+            --info-dark: #2563eb;
+            
+            --purple-light: #a78bfa;
+            --purple: #8b5cf6;
+            --purple-dark: #7c3aed;
+            
+            /* Advanced Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-700) 100%);
+            --gradient-primary-hover: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-600) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, var(--primary-100) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, var(--primary-200) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, var(--primary-50) 0px, transparent 50%);
+            
+            /* Text Colors */
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --text-white: #ffffff;
+            --text-inverse: #f8fafc;
+            
+            /* Background Colors */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --bg-elevated: #ffffff;
+            --bg-backdrop: rgba(0, 0, 0, 0.5);
+            
+            /* Glass Effect */
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            
+            /* Advanced Shadows */
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            --shadow-2xl: 0 35px 60px -15px rgba(0, 0, 0, 0.2);
+            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            --shadow-colored: 0 10px 40px rgba(0, 168, 89, 0.15);
+            
+            /* Borders & Radius */
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius-xs: 0.25rem;
+            --radius-sm: 0.375rem;
+            --radius: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-2xl: 2rem;
+            --radius-full: 9999px;
+            
+            /* Spacing Scale */
+            --space-0: 0;
+            --space-px: 1px;
+            --space-0\.5: 0.125rem;
+            --space-1: 0.25rem;
+            --space-1\.5: 0.375rem;
+            --space-2: 0.5rem;
+            --space-2\.5: 0.625rem;
+            --space-3: 0.75rem;
+            --space-3\.5: 0.875rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-7: 1.75rem;
+            --space-8: 2rem;
+            --space-9: 2.25rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-14: 3.5rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            
+            /* Advanced Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-out: cubic-bezier(0, 0, 0.2, 1);
+            --ease-in: cubic-bezier(0.4, 0, 1, 1);
+            --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            
+            /* Z-index Scale */
+            --z-0: 0;
+            --z-10: 10;
+            --z-20: 20;
+            --z-30: 30;
+            --z-40: 40;
+            --z-50: 50;
+            --z-modal: 100;
+            --z-tooltip: 200;
+            --z-notification: 300;
+            
+            /* Animations */
+            --animation-duration: 200ms;
+            --animation-timing: var(--ease-out);
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            /* Primary Colors Dark */
+            --primary-50: #0d2818;
+            --primary-100: #1a3d2a;
+            --primary-200: #27533c;
+            --primary-300: #34684e;
+            --primary-400: #417e60;
+            --primary-500: #00e07d;
+            --primary-600: #00ff94;
+            --primary-700: #33ffa8;
+            --primary-800: #66ffbb;
+            --primary-900: #99ffcf;
+            
+            /* Text Colors Dark */
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --text-white: #0f172a;
+            --text-inverse: #0f172a;
+            
+            /* Background Colors Dark */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-elevated: #1e293b;
+            --bg-backdrop: rgba(0, 0, 0, 0.8);
+            
+            /* Glass Effect Dark */
+            --glass-bg: rgba(30, 41, 59, 0.8);
+            --glass-border: rgba(148, 163, 184, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* Borders Dark */
+            --border-color: #334155;
+            --border-light: #475569;
+            
+            /* Shadows Dark */
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            --shadow-2xl: 0 35px 60px -15px rgba(0, 0, 0, 0.5);
+            --shadow-colored: 0 10px 40px rgba(0, 224, 125, 0.2);
+        }
+
+        /* ==================== Base Styles ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color var(--transition-base), color var(--transition-base);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            direction: rtl;
+            touch-action: manipulation;
+            position: relative;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: var(--gradient-mesh);
+            opacity: 0.5;
+            z-index: -1;
+            animation: meshFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes meshFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-20px, -20px) rotate(120deg); }
+            66% { transform: translate(20px, -10px) rotate(240deg); }
+        }
+
+        /* Privacy Mode Enhanced */
+        body.privacy-mode .amount-value {
+            position: relative;
+            filter: blur(8px);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        body.privacy-mode .amount-value::after {
+            content: '••••';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(0);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* ==================== Layout Components ==================== */
+        .container {
+            width: 100%;
+            padding: 0 var(--space-4);
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+                padding: 0 var(--space-6);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        /* ==================== Advanced Button Styles ==================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            border: none;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            touch-action: manipulation;
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+            white-space: nowrap;
+            text-decoration: none;
+            outline: none;
+        }
+
+        /* Ripple Effect */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:focus-visible {
+            box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--primary-500);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Button Variants */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md), var(--shadow-colored);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background: var(--gradient-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--shadow-colored);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-300);
+        }
+
+        .btn-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-danger {
+            background: var(--gradient-danger);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Button Sizes */
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: 0.75rem;
+        }
+
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .btn-xl {
+            padding: var(--space-5) var(--space-10);
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        .btn-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 0;
+            border-radius: var(--radius-full);
+        }
+
+        .btn-icon.btn-lg {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        /* ==================== Advanced Controls ==================== */
+        .controls {
+            position: fixed;
+            top: var(--space-4);
+            left: var(--space-4);
+            display: flex;
+            gap: var(--space-3);
+            z-index: var(--z-tooltip);
+            animation: slideInDown 0.5s var(--spring);
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .control-btn {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            box-shadow: var(--glass-shadow);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-size: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity var(--transition-base);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-300);
+        }
+
+        .control-btn:hover::after {
+            opacity: 0.1;
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ==================== Advanced Header ==================== */
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-16) 0 var(--space-10);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Animated Background Pattern */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 25% 35%, rgba(255,255,255,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 65%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: headerWave 15s linear infinite;
+        }
+
+        @keyframes headerWave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Decorative Elements */
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--bg-primary);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: scaleX(1.5);
+        }
+
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 5rem;
+            height: 5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-6);
+            font-size: 2.5rem;
+            box-shadow: var(--glass-shadow);
+            animation: logoFloat 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: var(--gradient-glass);
+            border-radius: var(--radius-xl);
+            opacity: 0.5;
+            z-index: -1;
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: var(--space-2);
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            margin-bottom: var(--space-8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+            animation: badgeFadeIn 0.8s var(--spring) 0.3s both;
+        }
+
+        @keyframes badgeFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .security-badge .badge-icon {
+            font-size: 1.125rem;
+            animation: lockRotate 2s ease-in-out infinite;
+        }
+
+        @keyframes lockRotate {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        /* ==================== Advanced Upload Section ==================== */
+        .upload-section {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+            margin: var(--space-8) 0;
+            text-align: center;
+            border: 2px dashed var(--border-color);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .upload-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-mesh);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .upload-section:hover::before {
+            opacity: 0.3;
+        }
+
+        .upload-section.dragover {
+            border-color: var(--primary-500);
+            background: var(--primary-50);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg), var(--shadow-colored);
+        }
+
+        .upload-icon {
+            width: 6rem;
+            height: 6rem;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-6);
+            font-size: 3rem;
+            box-shadow: var(--shadow-lg), var(--shadow-colored);
+            position: relative;
+            animation: uploadFloat 4s ease-in-out infinite;
+        }
+
+        .upload-icon::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            opacity: 0.2;
+            animation: uploadPulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes uploadFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        @keyframes uploadPulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.2); opacity: 0; }
+        }
+
+        .upload-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+            line-height: 1.2;
+        }
+
+        .upload-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+            font-size: 1.125rem;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 24rem;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .file-input-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            width: 100%;
+            padding: var(--space-5) var(--space-8);
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-lg), var(--shadow-colored);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-input-label::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateY(-50%);
+            transition: left 0.6s;
+        }
+
+        .file-input-label:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl), var(--shadow-colored);
+        }
+
+        .file-input-label:hover::before {
+            left: 100%;
+        }
+
+        .file-input-label .icon {
+            font-size: 1.5rem;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* Files List */
+        .files-list {
+            margin-top: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-tertiary);
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+            animation: fileSlideIn 0.4s var(--spring);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        @keyframes fileSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .file-item:hover {
+            background: var(--primary-50);
+            transform: translateX(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-300);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .file-icon::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .file-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: var(--space-1);
+        }
+
+        .file-size {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .file-remove {
+            padding: var(--space-2) var(--space-4);
+            background: var(--gradient-danger);
+            color: white;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .file-remove:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ==================== Advanced Loading State ==================== */
+        .loading-section {
+            display: none;
+            text-align: center;
+            padding: var(--space-16);
+            position: relative;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .spinner-container {
+            width: 6rem;
+            height: 6rem;
+            margin: 0 auto var(--space-8);
+            position: relative;
+        }
+
+        .spinner {
+            position: absolute;
+            inset: 0;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary-500);
+            border-radius: var(--radius-full);
+            animation: spin 1s linear infinite;
+        }
+
+        .spinner::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 4px solid transparent;
+            border-top-color: var(--primary-300);
+            border-radius: var(--radius-full);
+            animation: spin 0.8s linear reverse infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-600);
+            margin-bottom: var(--space-3);
+            animation: loadingPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .loading-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        /* ==================== Results Section ==================== */
+        .results-section {
+            display: none;
+            margin-top: var(--space-8);
+            animation: resultsFadeIn 0.6s var(--spring);
+        }
+
+        @keyframes resultsFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== Advanced Insights Card ==================== */
+        .insights-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            margin-bottom: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .insights-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .insights-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-8);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insights-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: insightWave 10s linear infinite;
+        }
+
+        @keyframes insightWave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .insights-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .insights-title .icon {
+            font-size: 2rem;
+            animation: insightGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes insightGlow {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.1); filter: brightness(1.2); }
+        }
+
+        .insights-subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .insights-list {
+            padding: var(--space-6);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .insight-item {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            display: flex;
+            gap: var(--space-4);
+            transition: all var(--transition-base);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            animation: insightFadeIn 0.5s var(--spring) backwards;
+        }
+
+        .insight-item:nth-child(1) { animation-delay: 0.1s; }
+        .insight-item:nth-child(2) { animation-delay: 0.2s; }
+        .insight-item:nth-child(3) { animation-delay: 0.3s; }
+        .insight-item:nth-child(4) { animation-delay: 0.4s; }
+        .insight-item:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes insightFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .insight-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .insight-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: var(--bg-secondary);
+        }
+
+        .insight-item:hover::before {
+            opacity: 1;
+        }
+
+        .insight-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .insight-icon::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: var(--radius-lg);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .insight-icon.positive {
+            background: linear-gradient(135deg, var(--success-light), var(--success));
+            color: white;
+        }
+
+        .insight-icon.positive::after {
+            background: linear-gradient(135deg, var(--success-light), var(--success));
+        }
+
+        .insight-icon.warning {
+            background: linear-gradient(135deg, var(--warning-light), var(--warning));
+            color: white;
+        }
+
+        .insight-icon.warning::after {
+            background: linear-gradient(135deg, var(--warning-light), var(--warning));
+        }
+
+        .insight-icon.danger {
+            background: linear-gradient(135deg, var(--danger-light), var(--danger));
+            color: white;
+        }
+
+        .insight-icon.danger::after {
+            background: linear-gradient(135deg, var(--danger-light), var(--danger));
+        }
+
+        .insight-icon.info {
+            background: linear-gradient(135deg, var(--info-light), var(--info));
+            color: white;
+        }
+
+        .insight-icon.info::after {
+            background: linear-gradient(135deg, var(--info-light), var(--info));
+        }
+
+        .insight-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .insight-title-text {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+            font-size: 1.125rem;
+            line-height: 1.3;
+        }
+
+        .insight-description {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .insight-action {
+            margin-top: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--primary-600);
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .insight-action:hover {
+            color: var(--primary-700);
+            gap: var(--space-3);
+        }
+
+        /* ==================== Advanced Summary Cards ==================== */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        @media (min-width: 640px) {
+            .summary-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .summary-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-align: center;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            animation: cardFadeIn 0.5s var(--spring) backwards;
+        }
+
+        .summary-card:nth-child(1) { animation-delay: 0.1s; }
+        .summary-card:nth-child(2) { animation-delay: 0.2s; }
+        .summary-card:nth-child(3) { animation-delay: 0.3s; }
+        .summary-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-mesh);
+            opacity: 0;
+            transition: opacity var(--transition-slow);
+            z-index: 0;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .summary-card:hover::before {
+            opacity: 0.5;
+        }
+
+        .summary-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .summary-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            font-size: 2rem;
+            position: relative;
+            box-shadow: var(--shadow-md);
+        }
+
+        .summary-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: var(--radius-lg);
+            opacity: 0.2;
+            z-index: -1;
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+        }
+
+        .summary-icon.income {
+            background: linear-gradient(135deg, var(--success-light), var(--success));
+            color: white;
+        }
+
+        .summary-icon.income::after {
+            background: linear-gradient(135deg, var(--success-light), var(--success));
+        }
+
+        .summary-icon.expense {
+            background: linear-gradient(135deg, var(--danger-light), var(--danger));
+            color: white;
+        }
+
+        .summary-icon.expense::after {
+            background: linear-gradient(135deg, var(--danger-light), var(--danger));
+        }
+
+        .summary-icon.balance {
+            background: linear-gradient(135deg, var(--info-light), var(--info));
+            color: white;
+        }
+
+        .summary-icon.balance::after {
+            background: linear-gradient(135deg, var(--info-light), var(--info));
+        }
+
+        .summary-icon.operations {
+            background: linear-gradient(135deg, var(--purple-light), var(--purple));
+            color: white;
+        }
+
+        .summary-icon.operations::after {
+            background: linear-gradient(135deg, var(--purple-light), var(--purple));
+        }
+
+        .summary-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .summary-label {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .summary-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            margin-top: var(--space-2);
+            padding: var(--space-1) var(--space-3);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .summary-trend.positive {
+            background: var(--success-light);
+            color: var(--success-dark);
+        }
+
+        .summary-trend.negative {
+            background: var(--danger-light);
+            color: var(--danger-dark);
+        }
+
+        /* ==================== Advanced Charts ==================== */
+        .chart-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-6);
+        }
+
+        .chart-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .chart-title .icon {
+            font-size: 1.5rem;
+            color: var(--primary-600);
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .chart-action {
+            padding: var(--space-2) var(--space-3);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .chart-action:hover {
+            background: var(--primary-50);
+            color: var(--primary-700);
+            border-color: var(--primary-300);
+        }
+
+        .chart-canvas {
+            position: relative;
+            height: 350px;
+        }
+
+        @media (max-width: 640px) {
+            .chart-canvas {
+                height: 280px;
+            }
+        }
+
+        /* ==================== Advanced Tabs ==================== */
+        .tabs-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .tabs {
+            display: flex;
+            gap: var(--space-2);
+            position: relative;
+        }
+
+        .tabs::before {
+            content: '';
+            position: absolute;
+            height: calc(100% - var(--space-4));
+            width: calc(50% - var(--space-3));
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            top: var(--space-2);
+            left: var(--space-2);
+            transition: transform var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tabs:has(.tab:last-child.active)::before {
+            transform: translateX(calc(100% + var(--space-2)));
+        }
+
+        .tab {
+            flex: 1;
+            padding: var(--space-4) var(--space-6);
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+            position: relative;
+            z-index: 2;
+            font-family: inherit;
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .tab.active {
+            color: var(--text-primary);
+        }
+
+        .tab:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        .tab .icon {
+            font-size: 1.125rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: tabFadeIn 0.4s var(--spring);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes tabFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== Advanced Categories ==================== */
+        .categories-header {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .categories-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+        }
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .category-item {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 1px solid var(--border-light);
+            animation: categorySlideIn 0.5s var(--spring) backwards;
+        }
+
+        .category-item:nth-child(1) { animation-delay: 0.1s; }
+        .category-item:nth-child(2) { animation-delay: 0.2s; }
+        .category-item:nth-child(3) { animation-delay: 0.3s; }
+        .category-item:nth-child(4) { animation-delay: 0.4s; }
+        .category-item:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes categorySlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .category-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-6);
+            cursor: pointer;
+            background: var(--bg-tertiary);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--primary-50), transparent);
+            transition: left 0.6s;
+        }
+
+        .category-header:hover::before {
+            left: 100%;
+        }
+
+        .category-header:active {
+            background: var(--primary-50);
+        }
+
+        .category-info {
+            flex: 1;
+            margin-left: var(--space-4);
+        }
+
+        .category-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+            font-size: 1.125rem;
+        }
+
+        .category-stats {
+            display: flex;
+            gap: var(--space-4);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .category-stats span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .category-amount {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-600);
+            white-space: nowrap;
+            margin-left: var(--space-4);
+        }
+
+        .category-toggle {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            transition: all var(--transition-base);
+            flex-shrink: 0;
+            margin-right: var(--space-4);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-item.expanded .category-toggle {
+            transform: rotate(180deg);
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .subcategories {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+            background: var(--bg-secondary);
+        }
+
+        .category-item.expanded .subcategories {
+            max-height: 2000px;
+        }
+
+        .subcategory-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-4) var(--space-6);
+            border-top: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .subcategory-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: transform var(--transition-base);
+        }
+
+        .subcategory-item:hover {
+            background: var(--bg-tertiary);
+            padding-right: calc(var(--space-6) + 4px);
+        }
+
+        .subcategory-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .subcategory-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-4);
+        }
+
+        .subcategory-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .subcategory-count {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+        }
+
+        .subcategory-amount {
+            font-weight: 700;
+            color: var(--text-secondary);
+            font-size: 1.0625rem;
+        }
+
+        /* ==================== Advanced Table ==================== */
+        .table-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .table-header {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9375rem;
+        }
+
+        .table th {
+            background: var(--bg-tertiary);
+            padding: var(--space-4);
+            text-align: right;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .table th:first-child {
+            border-radius: var(--radius-lg) 0 0 0;
+        }
+
+        .table th:last-child {
+            border-radius: 0 var(--radius-lg) 0 0;
+        }
+
+        .table td {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            transition: all var(--transition-base);
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tr {
+            transition: all var(--transition-base);
+        }
+
+        .table tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .table tr:hover td {
+            color: var(--text-primary);
+        }
+
+        .table .desc-cell {
+            cursor: pointer;
+            position: relative;
+            padding-left: var(--space-8);
+        }
+
+        .table .desc-cell::before {
+            content: '📋';
+            position: absolute;
+            right: var(--space-2);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .table .desc-cell:hover::before {
+            opacity: 0.6;
+        }
+
+        .table .amount-cell {
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .table .amount-positive {
+            color: var(--success);
+        }
+
+        .table .amount-negative {
+            color: var(--danger);
+        }
+
+        /* ==================== Advanced Modal ==================== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--bg-backdrop);
+            backdrop-filter: blur(8px);
+            z-index: var(--z-modal);
+            padding: var(--space-4);
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s var(--ease-out);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-container {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8) 0;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-2xl);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
+            animation: modalSlideIn 0.5s var(--spring);
+            position: relative;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: modalWave 8s linear infinite;
+        }
+
+        @keyframes modalWave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-close {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: var(--space-8);
+            max-height: calc(90vh - 200px);
+            overflow-y: auto;
+        }
+
+        .modal-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        @media (max-width: 640px) {
+            .modal-stats {
+                grid-template-columns: 1fr;
+                gap: var(--space-3);
+            }
+        }
+
+        .modal-stat {
+            text-align: center;
+            padding: var(--space-5);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-base);
+        }
+
+        .modal-stat:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .modal-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+        }
+
+        .modal-stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-600);
+            line-height: 1;
+        }
+
+        /* ==================== Advanced Messages ==================== */
+        .message {
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            margin: var(--space-4) 0;
+            display: none;
+            align-items: center;
+            gap: var(--space-3);
+            animation: messageSlideIn 0.4s var(--spring);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 4px;
+            background: currentColor;
+        }
+
+        .message-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .message-text {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .message-success {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: var(--success-dark);
+        }
+
+        .message-error {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: var(--danger-dark);
+        }
+
+        /* ==================== Advanced Footer ==================== */
+        .footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-12) 0;
+            margin-top: var(--space-16);
+            text-align: center;
+            border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: footerFloat 20s linear infinite;
+        }
+
+        @keyframes footerFloat {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+            animation: footerSuccess 1s var(--spring);
+        }
+
+        @keyframes footerSuccess {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        .footer h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            opacity: 0.95;
+            margin-bottom: var(--space-6);
+            font-size: 1.125rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-weight: 700;
+            font-size: 1.125rem;
+            padding: var(--space-3) var(--space-6);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-full);
+            box-shadow: var(--glass-shadow);
+        }
+
+        /* ==================== Advanced Toast ==================== */
+        .toast {
+            position: fixed;
+            bottom: var(--space-8);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-xl);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            animation: toastSlideIn 0.5s var(--spring);
+            z-index: var(--z-notification);
+            border: 1px solid var(--border-color);
+        }
+
+        @keyframes toastSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(100%) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        .toast-icon {
+            font-size: 1.25rem;
+            animation: toastIconBounce 0.6s var(--spring);
+        }
+
+        @keyframes toastIconBounce {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* ==================== Advanced Scrollbar ==================== */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            border: 2px solid var(--bg-tertiary);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-primary-hover);
+        }
+
+        /* ==================== Loading States ==================== */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ==================== Utility Classes ==================== */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+
+        .mt-2 { margin-top: var(--space-2); }
+        .mt-4 { margin-top: var(--space-4); }
+        .mt-6 { margin-top: var(--space-6); }
+        .mt-8 { margin-top: var(--space-8); }
+
+        .mb-2 { margin-bottom: var(--space-2); }
+        .mb-4 { margin-bottom: var(--space-4); }
+        .mb-6 { margin-bottom: var(--space-6); }
+        .mb-8 { margin-bottom: var(--space-8); }
+
+        .gap-2 { gap: var(--space-2); }
+        .gap-4 { gap: var(--space-4); }
+        .gap-6 { gap: var(--space-6); }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .upload-title {
+                font-size: 1.5rem;
+            }
+            
+            .file-input-label {
+                font-size: 1rem;
+                padding: var(--space-4) var(--space-6);
+            }
+            
+            .summary-value {
+                font-size: 1.5rem;
+            }
+            
+            .chart-canvas {
+                height: 280px;
+            }
+            
+            .category-name {
+                font-size: 1rem;
+            }
+            
+            .category-amount {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* ==================== Print Styles ==================== */
+        @media print {
+            .controls,
+            .btn,
+            .file-input-wrapper,
+            .modal,
+            .toast,
+            .tab,
+            .category-toggle {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .header {
+                background: none;
+                color: black;
+                border-bottom: 2px solid black;
+                page-break-after: avoid;
+            }
+            
+            .chart-container,
+            .category-item,
+            .insight-item,
+            .summary-card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            
+            .category-item.expanded .subcategories {
+                max-height: none !important;
+            }
+        }
+
+        /* ==================== Accessibility ==================== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Focus Visible */
+        :focus-visible {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 2px;
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .btn-primary {
+                background: var(--primary-700);
+                border: 2px solid white;
+            }
+            
+            .card,
+            .modal-content {
+                border: 2px solid var(--text-primary);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" onclick="toggleTheme()" title="تبديل الوضع" aria-label="تبديل الوضع">
+            <span id="themeIcon">🌙</span>
+        </button>
+        <button class="control-btn" onclick="togglePrivacy()" title="إخفاء الأرقام" aria-label="إخفاء الأرقام">
+            <span id="privacyIcon">👁️</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">🏦</div>
+                <h1>محلل كشف الحساب الذكي</h1>
+                <p>تحليل متقدم بنظام التصنيف الثنائي</p>
+                <div class="security-badge">
+                    <span class="badge-icon">🔒</span>
+                    <span>رابط آمن - استخدام واحد</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-icon">📊</div>
+            <h2 class="upload-title">رفع كشف الحساب</h2>
+            <p class="upload-subtitle">ارفع ملف PDF للحصول على تحليل ذكي وشامل</p>
+            
+            <div class="file-input-wrapper">
+                <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple>
+                <label for="fileInput" class="file-input-label">
+                    <span class="icon">📁</span>
+                    <span>اختر ملفات PDF</span>
+                </label>
+            </div>
+            
+            <div class="files-list" id="filesList"></div>
+            
+            <button class="btn btn-primary btn-xl" id="analyzeBtn" style="display: none; margin: 2rem auto 0;">
+                بدء التحليل الذكي
+            </button>
+        </section>
+
+        <!-- Messages -->
+        <div class="message message-success" id="successMessage">
+            <span class="message-icon">✓</span>
+            <span class="message-text"></span>
+        </div>
+        <div class="message message-error" id="errorMessage">
+            <span class="message-icon">⚠️</span>
+            <span class="message-text"></span>
+        </div>
+
+        <!-- Loading Section -->
+        <section class="loading-section" id="loadingSection">
+            <div class="loading-content">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+                <h3 class="loading-title">جاري التحليل الذكي...</h3>
+                <p class="loading-subtitle">يتم معالجة البيانات وتصنيفها</p>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+            <!-- Insights -->
+            <div class="insights-card" id="insightsCard">
+                <div class="insights-header">
+                    <h2 class="insights-title">
+                        <span class="icon">💡</span>
+                        <span>رؤى ذكية وتوصيات</span>
+                    </h2>
+                    <p class="insights-subtitle">تحليل مُخصص لوضعك المالي بناءً على بياناتك الفعلية</p>
+                </div>
+                <div class="insights-list" id="insightsList"></div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-grid" id="summaryCards"></div>
+
+            <!-- Charts -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">
+                        <span class="icon">📊</span>
+                        <span>اتجاه رصيد الحساب</span>
+                    </h3>
+                </div>
+                <div class="chart-canvas">
+                    <canvas id="balanceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">
+                        <span class="icon">💰</span>
+                        <span>مقارنة الدخل والمصاريف</span>
+                    </h3>
+                </div>
+                <div class="chart-canvas">
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">
+                        <span class="icon">🍰</span>
+                        <span>توزيع المصاريف حسب الفئات</span>
+                    </h3>
+                </div>
+                <div class="chart-canvas">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('expenses')">
+                        <span class="icon">💸</span>
+                        <span>المصاريف</span>
+                    </button>
+                    <button class="tab" onclick="showTab('income')">
+                        <span class="icon">💰</span>
+                        <span>الدخل</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="expenses" class="tab-content active">
+                <div class="categories-header">
+                    <h3 class="categories-title">
+                        <span>🛒</span>
+                        <span>تفاصيل المصاريف (التصنيف الثنائي)</span>
+                    </h3>
+                </div>
+                <div class="categories-list" id="expenseCategories"></div>
+            </div>
+
+            <div id="income" class="tab-content">
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">
+                            <span>💳</span>
+                            <span>مصادر الدخل</span>
+                        </h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="table" id="incomeTable"></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer" style="display: none;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-icon">✅</div>
+                <h4>تم الانتهاء من التحليل بنجاح</h4>
+                <p>تم حذف جميع الملفات تلقائياً لضمان خصوصيتك</p>
+                <div class="footer-brand">
+                    <span>🏦</span>
+                    <span>البنك الأهلي السعودي</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">تفاصيل العمليات</h3>
+                    <button class="modal-close" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-stats">
+                        <div class="modal-stat">
+                            <div class="modal-stat-label">المجموع</div>
+                            <div class="modal-stat-value amount-value" id="modalTotal">0</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="modal-stat-label">العمليات</div>
+                            <div class="modal-stat-value" id="modalCount">0</div>
+                        </div>
+                        <div class="modal-stat">
+                            <div class="modal-stat-label">المتوسط</div>
+                            <div class="modal-stat-value amount-value" id="modalAverage">0</div>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>التاريخ</th>
+                                    <th>الوصف</th>
+                                    <th>المبلغ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== Global Variables ====================
+        let uploadedFiles = [];
+        let analysisResults = null;
+        let charts = {};
+        let privacyMode = false;
+
+        // ==================== Initialize ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            setupTheme();
+            setupEventListeners();
+            setupDragAndDrop();
+            preventDoubleTapZoom();
+            console.log('Application initialized successfully');
+        }
+
+        // ==================== Theme Management ====================
+        function setupTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            // Apply theme color to meta tag
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) {
+                metaTheme.content = savedTheme === 'dark' ? '#0f172a' : '#00a859';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+            
+            // Update theme color meta tag
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) {
+                metaTheme.content = newTheme === 'dark' ? '#0f172a' : '#00a859';
+            }
+            
+            // Update charts if results exist
+            if (analysisResults) {
+                setTimeout(() => updateCharts(), 100);
+            }
+            
+            // Add haptic feedback if available
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            
+            // Add rotation animation
+            icon.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                icon.style.transform = 'rotate(0deg)';
+            }, 300);
+        }
+
+        // ==================== Privacy Mode ====================
+        function togglePrivacy() {
+            privacyMode = !privacyMode;
+            document.body.classList.toggle('privacy-mode', privacyMode);
+            const icon = document.getElementById('privacyIcon');
+            icon.textContent = privacyMode ? '👁️‍🗨️' : '👁️';
+            
+            // Update charts
+            if (charts.balance) {
+                updateCharts();
+            }
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+        }
+
+        // ==================== Event Listeners ====================
+        function setupEventListeners() {
+            const fileInput = document.getElementById('fileInput');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            
+            if (fileInput) {
+                fileInput.addEventListener('change', handleFileSelection);
+            }
+            
+            if (analyzeBtn) {
+                analyzeBtn.addEventListener('click', analyzeFiles);
+            }
+            
+            // Modal events
+            const modal = document.getElementById('transactionModal');
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        // ==================== Drag and Drop ====================
+        function setupDragAndDrop() {
+            const uploadSection = document.getElementById('uploadSection');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadSection.addEventListener(eventName, preventDefaults, false);
+                document.body.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadSection.addEventListener(eventName, () => {
+                    uploadSection.classList.add('dragover');
+                }, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadSection.addEventListener(eventName, () => {
+                    uploadSection.classList.remove('dragover');
+                }, false);
+            });
+            
+            uploadSection.addEventListener('drop', (e) => {
+                const files = e.dataTransfer.files;
+                handleFiles(files);
+            }, false);
+        }
+
+        // ==================== File Handling ====================
+        function handleFileSelection(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            const maxFiles = 5;
+            const maxSize = 32 * 1024 * 1024; // 32MB
+            
+            if (files.length > maxFiles) {
+                showError(`يمكنك رفع ${maxFiles} ملفات كحد أقصى`);
+                return;
+            }
+            
+            const validFiles = [];
+            
+            for (let file of files) {
+                if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+                    showError('يرجى رفع ملفات PDF فقط');
+                    return;
+                }
+                
+                if (file.size > maxSize) {
+                    showError('حجم الملف كبير جداً (الحد الأقصى 32MB)');
+                    return;
+                }
+                
+                validFiles.push(file);
+            }
+            
+            uploadedFiles = validFiles;
+            displayFiles();
+            updateAnalyzeButton();
+            showSuccess(`تم اختيار ${validFiles.length} ملف بنجاح`);
+        }
+
+        function displayFiles() {
+            const filesList = document.getElementById('filesList');
+            filesList.innerHTML = '';
+            
+            uploadedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.style.animationDelay = `${index * 0.1}s`;
+                
+                fileItem.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${formatFileSize(file.size)}</div>
+                        </div>
+                    </div>
+                    <button class="file-remove" onclick="removeFile(${index})">حذف</button>
+                `;
+                
+                filesList.appendChild(fileItem);
+            });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        function removeFile(index) {
+            uploadedFiles.splice(index, 1);
+            displayFiles();
+            updateAnalyzeButton();
+            document.getElementById('fileInput').value = '';
+            
+            if (uploadedFiles.length === 0) {
+                showSuccess('تم حذف جميع الملفات');
+            }
+        }
+
+        function updateAnalyzeButton() {
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            if (uploadedFiles.length > 0) {
+                analyzeBtn.style.display = 'block';
+                analyzeBtn.textContent = `تحليل ${uploadedFiles.length} ملف`;
+            } else {
+                analyzeBtn.style.display = 'none';
+            }
+        }
+
+        // ==================== Analysis ====================
+        async function analyzeFiles() {
+            if (uploadedFiles.length === 0) {
+                showError('يرجى رفع ملف واحد على الأقل');
+                return;
+            }
+            
+            // Hide upload section
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('loadingSection').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            try {
+                const formData = new FormData();
+                uploadedFiles.forEach(file => {
+                    formData.append('files', file);
+                });
+                
+                // Add link ID if present
+                const linkId = window.location.pathname.split('/').pop();
+                if (linkId) {
+                    formData.append('link_id', linkId);
+                }
+                
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    analysisResults = result.data;
+                    updateResults();
+                    
+                    // Show results
+                    document.getElementById('loadingSection').style.display = 'none';
+                    document.getElementById('resultsSection').style.display = 'block';
+                    document.getElementById('footer').style.display = 'block';
+                    
+                    showSuccess('تم تحليل كشف الحساب بنجاح! 🎉');
+                    
+                    // Scroll to results
+                    setTimeout(() => {
+                        document.getElementById('resultsSection').scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }, 300);
+                    
+                    // Add haptic feedback
+                    if (navigator.vibrate) {
+                        navigator.vibrate([100, 50, 100]);
+                    }
+                } else {
+                    throw new Error(result.error || 'خطأ في التحليل');
+                }
+            } catch (error) {
+                document.getElementById('loadingSection').style.display = 'none';
+                document.getElementById('uploadSection').style.display = 'block';
+                showError('حدث خطأ: ' + error.message);
+            }
+        }
+
+        // ==================== Update Results ====================
+        function updateResults() {
+            updateInsights();
+            updateSummaryCards();
+            updateCharts();
+            updateExpenseCategories();
+            updateIncomeTable();
+        }
+
+        // ==================== Insights ====================
+        function updateInsights() {
+            const insightsList = document.getElementById('insightsList');
+            
+            if (!analysisResults.insights || analysisResults.insights.length === 0) {
+                insightsList.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem; filter: grayscale(1);">🔍</div>
+                        <p style="font-size: 1.125rem;">لا توجد رؤى كافية لتحليل البيانات الحالية</p>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">تحتاج لمزيد من العمليات للحصول على تحليل مفصل</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            insightsList.innerHTML = '';
+            
+            analysisResults.insights.slice(0, 5).forEach((insight, index) => {
+                let type = 'info';
+                let icon = '💡';
+                
+                if (insight.title.includes('ممتاز') || insight.title.includes('إيجابي')) {
+                    type = 'positive';
+                    icon = '✨';
+                } else if (insight.title.includes('تحذير') || insight.title.includes('خطر')) {
+                    type = 'danger';
+                    icon = '⚠️';
+                } else if (insight.title.includes('فرصة') || insight.title.includes('نصيحة')) {
+                    type = 'info';
+                    icon = '💡';
+                } else if (insight.title.includes('مرتفع')) {
+                    type = 'warning';
+                    icon = '📊';
+                }
+                
+                const insightElement = document.createElement('div');
+                insightElement.className = 'insight-item';
+                
+                let insightHTML = `
+                    <div class="insight-icon ${type}">${icon}</div>
+                    <div class="insight-content">
+                        <div class="insight-title-text">${insight.title}</div>
+                        <div class="insight-description">${insight.description}</div>
+                `;
+                
+                // Add potential saving if exists
+                if (insight.potential_saving && insight.potential_saving > 0) {
+                    insightHTML += `
+                        <div class="insight-action">
+                            <span>💰 توفير محتمل: ${formatCurrency(insight.potential_saving)}</span>
+                            <span>←</span>
+                        </div>
+                    `;
+                }
+                
+                insightHTML += `</div>`;
+                
+                insightElement.innerHTML = insightHTML;
+                insightsList.appendChild(insightElement);
+            });
+        }
+
+        // ==================== Summary Cards ====================
+        function updateSummaryCards() {
+            const summaryCards = document.getElementById('summaryCards');
+            const summary = analysisResults.summary;
+            
+            const netBalance = summary.netBalance || (summary.totalIncome - summary.totalExpenses);
+            const savingsRate = summary.totalIncome > 0 ? 
+                ((summary.totalIncome - summary.totalExpenses) / summary.totalIncome * 100).toFixed(1) : 0;
+            
+            summaryCards.innerHTML = `
+                <div class="summary-card">
+                    <div class="summary-icon income">💰</div>
+                    <div class="summary-value amount-value" style="color: var(--success);">
+                        ${formatCurrency(summary.totalIncome)}
+                    </div>
+                    <div class="summary-label">إجمالي الدخل</div>
+                    ${summary.totalIncome > 0 ? '<div class="summary-trend positive">↑ دخل ثابت</div>' : ''}
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon expense">💸</div>
+                    <div class="summary-value amount-value" style="color: var(--danger);">
+                        ${formatCurrency(summary.totalExpenses)}
+                    </div>
+                    <div class="summary-label">إجمالي المصاريف</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon balance">
+                        ${netBalance >= 0 ? '📈' : '📉'}
+                    </div>
+                    <div class="summary-value amount-value" style="color: ${netBalance >= 0 ? 'var(--success)' : 'var(--danger)'};">
+                        ${formatCurrency(Math.abs(netBalance))}
+                    </div>
+                    <div class="summary-label">${netBalance >= 0 ? 'الفائض' : 'العجز'}</div>
+                    ${netBalance >= 0 ? 
+                        `<div class="summary-trend positive">↑ ${savingsRate}% معدل الادخار</div>` : 
+                        '<div class="summary-trend negative">↓ تجاوز المصاريف</div>'
+                    }
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon operations">🎯</div>
+                    <div class="summary-value">${summary.totalOperations}</div>
+                    <div class="summary-label">إجمالي العمليات</div>
+                    <div class="summary-trend positive">
+                        ${Math.round(summary.totalOperations / 30)} عملية/يوم
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==================== Charts ====================
+        function updateCharts() {
+            // Wait for DOM to be ready
+            setTimeout(() => {
+                createBalanceChart();
+                createIncomeExpenseChart();
+                createCategoryChart();
+            }, 100);
+        }
+
+        function createBalanceChart() {
+            const ctx = document.getElementById('balanceChart').getContext('2d');
+            
+            if (charts.balance) {
+                charts.balance.destroy();
+            }
+            
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            // Prepare data
+            let labels = [];
+            let data = [];
+            let currentBalance = 0;
+            
+            // Simulate balance progression
+            const steps = 5;
+            const stepAmount = analysisResults.summary.totalIncome / steps;
+            const expenseStep = analysisResults.summary.totalExpenses / steps;
+            
+            for (let i = 0; i <= steps; i++) {
+                labels.push(i === 0 ? 'البداية' : i === steps ? 'النهاية' : `فترة ${i}`);
+                currentBalance = (stepAmount * i) - (expenseStep * i);
+                data.push(currentBalance);
+            }
+            
+            // Chart configuration
+            const chartConfig = {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'رصيد الحساب',
+                        data: data,
+                        borderColor: isDark ? '#00e07d' : '#00a859',
+                        backgroundColor: isDark ? 'rgba(0, 224, 125, 0.1)' : 'rgba(0, 168, 89, 0.1)',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointBackgroundColor: isDark ? '#00e07d' : '#00a859',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 8,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: !privacyMode,
+                            backgroundColor: isDark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+                            titleColor: isDark ? '#f8fafc' : '#0f172a',
+                            bodyColor: isDark ? '#cbd5e1' : '#475569',
+                            borderColor: isDark ? '#334155' : '#e2e8f0',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            padding: 12,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Rubik'
+                            },
+                            bodyFont: {
+                                size: 13,
+                                family: 'Rubik'
+                            },
+                            rtl: true,
+                            textDirection: 'rtl',
+                            callbacks: {
+                                label: function(context) {
+                                    return 'الرصيد: ' + formatCurrency(context.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            position: 'right',
+                            ticks: {
+                                color: isDark ? '#94a3b8' : '#64748b',
+                                font: {
+                                    size: 12,
+                                    family: 'Rubik'
+                                },
+                                callback: function(value) {
+                                    return privacyMode ? '••••' : formatAmount(value);
+                                }
+                            },
+                            grid: {
+                                color: isDark ? 'rgba(148, 163, 184, 0.1)' : 'rgba(100, 116, 139, 0.1)',
+                                borderDash: [3, 3]
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: isDark ? '#94a3b8' : '#64748b',
+                                font: {
+                                    size: 12,
+                                    family: 'Rubik'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            };
+            
+            charts.balance = new Chart(ctx, chartConfig);
+        }
+
+        function createIncomeExpenseChart() {
+            const ctx = document.getElementById('incomeExpenseChart').getContext('2d');
+            
+            if (charts.incomeExpense) {
+                charts.incomeExpense.destroy();
+            }
+            
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            const chartConfig = {
+                type: 'bar',
+                data: {
+                    labels: ['الدخل', 'المصاريف'],
+                    datasets: [{
+                        data: [
+                            analysisResults.summary.totalIncome,
+                            analysisResults.summary.totalExpenses
+                        ],
+                        backgroundColor: [
+                            isDark ? 'rgba(74, 222, 128, 0.8)' : 'rgba(34, 197, 94, 0.8)',
+                            isDark ? 'rgba(248, 113, 113, 0.8)' : 'rgba(239, 68, 68, 0.8)'
+                        ],
+                        borderColor: [
+                            isDark ? '#4ade80' : '#22c55e',
+                            isDark ? '#f87171' : '#ef4444'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 12,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: !privacyMode,
+                            backgroundColor: isDark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+                            titleColor: isDark ? '#f8fafc' : '#0f172a',
+                            bodyColor: isDark ? '#cbd5e1' : '#475569',
+                            borderColor: isDark ? '#334155' : '#e2e8f0',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            padding: 12,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Rubik'
+                            },
+                            bodyFont: {
+                                size: 13,
+                                family: 'Rubik'
+                            },
+                            rtl: true,
+                            textDirection: 'rtl',
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = formatCurrency(context.parsed.y);
+                                    const percentage = ((context.parsed.y / (analysisResults.summary.totalIncome + analysisResults.summary.totalExpenses)) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            position: 'right',
+                            ticks: {
+                                color: isDark ? '#94a3b8' : '#64748b',
+                                font: {
+                                    size: 12,
+                                    family: 'Rubik'
+                                },
+                                callback: function(value) {
+                                    return privacyMode ? '••••' : formatAmount(value);
+                                }
+                            },
+                            grid: {
+                                color: isDark ? 'rgba(148, 163, 184, 0.1)' : 'rgba(100, 116, 139, 0.1)',
+                                borderDash: [3, 3]
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: isDark ? '#94a3b8' : '#64748b',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold',
+                                    family: 'Rubik'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            };
+            
+            charts.incomeExpense = new Chart(ctx, chartConfig);
+        }
+
+        function createCategoryChart() {
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+            
+            if (charts.category) {
+                charts.category.destroy();
+            }
+            
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            // Prepare data
+            let labels = [];
+            let data = [];
+            let backgroundColors = [];
+            
+            const colors = isDark ? [
+                '#00ff94', '#60a5fa', '#fbbf24', '#f87171', '#a78bfa', '#4ade80',
+                '#f472b6', '#34d399', '#fde047', '#fb923c'
+            ] : [
+                '#00a859', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#22c55e',
+                '#ec4899', '#10b981', '#eab308', '#f97316'
+            ];
+            
+            if (analysisResults.categorizedExpenses) {
+                analysisResults.categorizedExpenses.slice(0, 8).forEach((cat, index) => {
+                    labels.push(cat.mainCategory.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]/gu, '').trim());
+                    data.push(cat.totalAmount);
+                    backgroundColors.push(colors[index % colors.length]);
+                });
+            }
+            
+            const chartConfig = {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: backgroundColors,
+                        borderColor: isDark ? '#1e293b' : '#ffffff',
+                        borderWidth: 2,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            align: 'center',
+                            labels: {
+                                color: isDark ? '#cbd5e1' : '#475569',
+                                padding: 16,
+                                usePointStyle: true,
+                                pointStyle: 'circle',
+                                font: {
+                                    size: 12,
+                                    family: 'Rubik',
+                                    weight: '600'
+                                },
+                                generateLabels: function(chart) {
+                                    const data = chart.data;
+                                    if (data.labels.length && data.datasets.length) {
+                                        const dataset = data.datasets[0];
+                                        const total = dataset.data.reduce((a, b) => a + b, 0);
+                                        
+                                        return data.labels.map((label, i) => {
+                                            const value = dataset.data[i];
+                                            const percentage = ((value / total) * 100).toFixed(1);
+                                            
+                                            return {
+                                                text: `${label} (${percentage}%)`,
+                                                fillStyle: dataset.backgroundColor[i],
+                                                strokeStyle: dataset.borderColor,
+                                                lineWidth: dataset.borderWidth,
+                                                hidden: false,
+                                                index: i
+                                            };
+                                        });
+                                    }
+                                    return [];
+                                }
+                            }
+                        },
+                        tooltip: {
+                            enabled: !privacyMode,
+                            backgroundColor: isDark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+                            titleColor: isDark ? '#f8fafc' : '#0f172a',
+                            bodyColor: isDark ? '#cbd5e1' : '#475569',
+                            borderColor: isDark ? '#334155' : '#e2e8f0',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            padding: 12,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Rubik'
+                            },
+                            bodyFont: {
+                                size: 13,
+                                family: 'Rubik'
+                            },
+                            rtl: true,
+                            textDirection: 'rtl',
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = formatCurrency(context.parsed);
+                                    const percentage = ((context.parsed / analysisResults.summary.totalExpenses) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            charts.category = new Chart(ctx, chartConfig);
+        }
+
+        // ==================== Expense Categories ====================
+        function updateExpenseCategories() {
+            const expenseCategories = document.getElementById('expenseCategories');
+            expenseCategories.innerHTML = '';
+            
+            if (!analysisResults.categorizedExpenses || analysisResults.categorizedExpenses.length === 0) {
+                expenseCategories.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                        <p>لا توجد مصاريف مصنفة</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            analysisResults.categorizedExpenses.forEach((mainCat, index) => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category-item';
+                
+                const percentage = ((mainCat.totalAmount / analysisResults.summary.totalExpenses) * 100).toFixed(1);
+                
+                categoryDiv.innerHTML = `
+                    <div class="category-header" onclick="toggleCategory(${index})">
+                        <div class="category-info">
+                            <div class="category-name">${mainCat.mainCategory}</div>
+                            <div class="category-stats">
+                                <span>📊 ${mainCat.transactionCount} عملية</span>
+                                <span>📈 ${percentage}%</span>
+                            </div>
+                        </div>
+                        <div class="category-amount amount-value">${formatCurrency(mainCat.totalAmount)}</div>
+                        <div class="category-toggle">▼</div>
+                    </div>
+                    <div class="subcategories">
+                        ${mainCat.subcategories.map(sub => {
+                            const subPercentage = ((sub.amount / mainCat.totalAmount) * 100).toFixed(1);
+                            return `
+                                <div class="subcategory-item" onclick="showSubcategoryDetails('${mainCat.mainCategory}', '${sub.name}')">
+                                    <div class="subcategory-info">
+                                        <div class="subcategory-name">${sub.name}</div>
+                                        <div class="subcategory-count">${sub.count} عملية</div>
+                                    </div>
+                                    <div class="subcategory-amount amount-value">${formatCurrency(sub.amount)}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+                
+                expenseCategories.appendChild(categoryDiv);
+            });
+        }
+
+        function toggleCategory(index) {
+            const categoryItems = document.querySelectorAll('.category-item');
+            if (categoryItems[index]) {
+                categoryItems[index].classList.toggle('expanded');
+                
+                // Add haptic feedback
+                if (navigator.vibrate) {
+                    navigator.vibrate(10);
+                }
+            }
+        }
+
+        function showSubcategoryDetails(mainCategory, subcategory) {
+            const modal = document.getElementById('transactionModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalTableBody = document.getElementById('modalTableBody');
+            
+            // Find transactions
+            let transactions = [];
+            
+            if (analysisResults.categorizedExpenses) {
+                const mainCat = analysisResults.categorizedExpenses.find(cat => cat.mainCategory === mainCategory);
+                if (mainCat) {
+                    const subCat = mainCat.subcategories.find(sub => sub.name === subcategory);
+                    if (subCat) {
+                        transactions = subCat.transactions;
+                    }
+                }
+            }
+            
+            if (transactions.length === 0) {
+                showError('لا توجد عمليات لهذا التصنيف');
+                return;
+            }
+            
+            modalTitle.textContent = `${mainCategory} - ${subcategory}`;
+            
+            const totalAmount = transactions.reduce((sum, trans) => sum + trans.amount, 0);
+            const avgAmount = totalAmount / transactions.length;
+            
+            document.getElementById('modalTotal').textContent = formatCurrency(totalAmount);
+            document.getElementById('modalCount').textContent = transactions.length;
+            document.getElementById('modalAverage').textContent = formatCurrency(avgAmount);
+            
+            modalTableBody.innerHTML = '';
+            
+            // Sort transactions by amount
+            const sortedTransactions = [...transactions].sort((a, b) => b.amount - a.amount);
+            
+            sortedTransactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                const cleanDesc = cleanDescription(transaction.desc || transaction.clean_desc);
+                
+                row.innerHTML = `
+                    <td>${transaction.date || 'غير محدد'}</td>
+                    <td class="desc-cell" onclick="copyText('${cleanDesc.replace(/'/g, "\\'")}')">
+                        ${cleanDesc}
+                    </td>
+                    <td class="amount-cell amount-negative">
+                        ${formatCurrency(transaction.amount)}
+                    </td>
+                `;
+                
+                modalTableBody.appendChild(row);
+            });
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ==================== Income Table ====================
+        function updateIncomeTable() {
+            const incomeTable = document.getElementById('incomeTable');
+            
+            if (!analysisResults.incomeDetails || analysisResults.incomeDetails.length === 0) {
+                incomeTable.innerHTML = `
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                            لا توجد عمليات دخل
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            let tableHTML = `
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>الوصف</th>
+                        <th>المبلغ</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+            
+            const sortedIncome = analysisResults.incomeDetails
+                .sort((a, b) => b.amount - a.amount)
+                .slice(0, 20);
+            
+            sortedIncome.forEach(income => {
+                const cleanDesc = cleanDescription(income.desc || income.clean_desc);
+                
+                tableHTML += `
+                    <tr>
+                        <td>${income.date}</td>
+                        <td class="desc-cell" onclick="copyText('${cleanDesc.replace(/'/g, "\\'")}')">
+                            ${cleanDesc}
+                        </td>
+                        <td class="amount-cell amount-positive">
+                            ${formatCurrency(income.amount)}
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += '</tbody>';
+            incomeTable.innerHTML = tableHTML;
+        }
+
+        // ==================== Modal Functions ====================
+        function closeModal() {
+            const modal = document.getElementById('transactionModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ==================== Tab Management ====================
+        function showTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+        }
+
+        // ==================== Utility Functions ====================
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('ar-SA', {
+                style: 'currency',
+                currency: 'SAR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function formatAmount(amount) {
+            return new Intl.NumberFormat('ar-SA', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function cleanDescription(desc) {
+            if (!desc) return 'عملية بنكية';
+            
+            // Remove sensitive information
+            let clean = desc
+                .replace(/\b\d{10,}\b/g, '') // Remove long numbers
+                .replace(/\*{4,}\d{4}/g, '') // Remove masked cards
+                .replace(/SANBCBNK\d+/gi, '') // Remove bank codes
+                .replace(/IBAN:.*?(?=\s|$)/gi, '') // Remove IBAN
+                .replace(/REF:.*?(?=\s|$)/gi, '') // Remove references
+                .replace(/ID:\s*\d+/gi, '') // Remove IDs
+                .replace(/TRN:.*?(?=\s|$)/gi, '') // Remove transaction numbers
+                .replace(/MCC[:\-]?\d{4}/gi, '') // Remove MCC codes
+                .replace(/\s+/g, ' ') // Clean extra spaces
+                .trim();
+            
+            return clean || 'عملية بنكية';
+        }
+
+        function copyText(text) {
+            // Try modern clipboard API first
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('تم نسخ النص بنجاح! 📋');
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-999999px';
+            textarea.style.top = '-999999px';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast('تم نسخ النص بنجاح! 📋');
+            } catch (err) {
+                showError('فشل نسخ النص');
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        // ==================== Messages & Notifications ====================
+        function showSuccess(message) {
+            showMessage(message, 'success');
+        }
+
+        function showError(message) {
+            showMessage(message, 'error');
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById(`${type}Message`);
+            const messageText = messageDiv.querySelector('.message-text');
+            
+            messageText.textContent = text;
+            messageDiv.style.display = 'flex';
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                if (type === 'error') {
+                    navigator.vibrate([100, 50, 100]);
+                } else {
+                    navigator.vibrate(50);
+                }
+            }
+            
+            // Auto hide
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, type === 'error' ? 5000 : 3000);
+        }
+
+        function showToast(message) {
+            // Remove existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <span class="toast-icon">✓</span>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+            
+            // Remove after animation
+            setTimeout(() => {
+                toast.style.animation = 'toastSlideOut 0.5s var(--spring)';
+                setTimeout(() => toast.remove(), 500);
+            }, 2500);
+        }
+
+        // Add toast slide out animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes toastSlideOut {
+                from {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0) scale(1);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(100%) scale(0.95);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ==================== Mobile Optimizations ====================
+        function preventDoubleTapZoom() {
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        }
+
+        // ==================== Performance Optimizations ====================
+        // Debounce function for resize events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', debounce(() => {
+            if (charts.balance || charts.incomeExpense || charts.category) {
+                updateCharts();
+            }
+        }, 250));
+
+        // ==================== Progressive Enhancement ====================
+        // Check for advanced features support
+        function checkFeatureSupport() {
+            const features = {
+                vibration: 'vibrate' in navigator,
+                clipboard: 'clipboard' in navigator,
+                backdrop: CSS.supports('backdrop-filter', 'blur(10px)'),
+                grid: CSS.supports('display', 'grid'),
+                customProperties: CSS.supports('color', 'var(--primary)')
+            };
+            
+            // Add classes based on support
+            Object.entries(features).forEach(([feature, supported]) => {
+                if (supported) {
+                    document.documentElement.classList.add(`supports-${feature}`);
+                }
+            });
+            
+            return features;
+        }
+
+        // Initialize feature detection
+        checkFeatureSupport();
+
+        // ==================== Error Handling ====================
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e.error);
+            // Don't show error to user unless it's critical
+        });
+
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e.reason);
+            // Don't show error to user unless it's critical
+        });
+
+        // ==================== Service Worker Registration ====================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {
+                    // Service worker registration failed, app will still work
+                });
+            });
+        }
+
+        // ==================== Page Visibility API ====================
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Page is hidden, pause animations if needed
+            } else {
+                // Page is visible again
+            }
+        });
+
+        // ==================== Intersection Observer for Animations ====================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements that should animate on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.insight-item, .summary-card, .category-item');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // ==================== Accessibility Enhancements ====================
+        // Skip to main content link
+        document.addEventListener('DOMContentLoaded', () => {
+            const skipLink = document.createElement('a');
+            skipLink.href = '#uploadSection';
+            skipLink.className = 'skip-link';
+            skipLink.textContent = 'تخطي إلى المحتوى الرئيسي';
+            skipLink.style.cssText = `
+                position: absolute;
+                top: -40px;
+                left: 0;
+                background: var(--primary);
+                color: white;
+                padding: 8px;
+                text-decoration: none;
+                border-radius: 0 0 4px 0;
+                transition: top 0.3s;
+            `;
+            
+            skipLink.addEventListener('focus', () => {
+                skipLink.style.top = '0';
+            });
+            
+            skipLink.addEventListener('blur', () => {
+                skipLink.style.top = '-40px';
+            });
+            
+            document.body.insertBefore(skipLink, document.body.firstChild);
+        });
+
+        // ==================== Print Functionality ====================
+        window.addEventListener('beforeprint', () => {
+            // Expand all categories
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.add('expanded');
+            });
+            
+            // Show all content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'block';
+            });
+        });
+
+        window.addEventListener('afterprint', () => {
+            // Reset to normal state
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.remove('expanded');
+            });
+            
+            // Hide inactive tabs
+            document.querySelectorAll('.tab-content:not(.active)').forEach(content => {
+                content.style.display = 'none';
+            });
+        });
+
+        // ==================== Network Status ====================
+        window.addEventListener('online', () => {
+            showSuccess('تم استعادة الاتصال بالإنترنت');
+        });
+
+        window.addEventListener('offline', () => {
+            showError('فقدان الاتصال بالإنترنت');
+        });
+
+        // ==================== Touch Gestures ====================
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                const tabs = document.querySelectorAll('.tab');
+                const activeTab = document.querySelector('.tab.active');
+                const activeIndex = Array.from(tabs).indexOf(activeTab);
+                
+                if (diff > 0 && activeIndex < tabs.length - 1) {
+                    // Swipe left - next tab
+                    tabs[activeIndex + 1].click();
+                } else if (diff < 0 && activeIndex > 0) {
+                    // Swipe right - previous tab
+                    tabs[activeIndex - 1].click();
+                }
+            }
+        }
+
+        // Add swipe support to tabs container
+        const tabsContainer = document.querySelector('.tabs-container');
+        if (tabsContainer) {
+            tabsContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            tabsContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+        }
+
+        // ==================== Local Storage for Preferences ====================
+        function savePreferences() {
+            const preferences = {
+                theme: document.documentElement.getAttribute('data-theme'),
+                privacyMode: privacyMode,
+                lastVisit: new Date().toISOString()
+            };
+            
+            try {
+                localStorage.setItem('bankAnalyzerPrefs', JSON.stringify(preferences));
+            } catch (e) {
+                // Storage might be full or disabled
+            }
+        }
+
+        function loadPreferences() {
+            try {
+                const saved = localStorage.getItem('bankAnalyzerPrefs');
+                if (saved) {
+                    const preferences = JSON.parse(saved);
+                    
+                    // Apply saved privacy mode
+                    if (preferences.privacyMode) {
+                        togglePrivacy();
+                    }
+                    
+                    return preferences;
+                }
+            } catch (e) {
+                // Invalid data or storage disabled
+            }
+            
+            return null;
+        }
+
+        // Load preferences on start
+        loadPreferences();
+
+        // Save preferences on change
+        window.addEventListener('beforeunload', savePreferences);
+
+        // ==================== Debug Mode ====================
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('debug') === 'true') {
+            console.log('Debug mode enabled');
+            console.log('Features supported:', checkFeatureSupport());
+            console.log('Theme:', document.documentElement.getAttribute('data-theme'));
+            console.log('Privacy mode:', privacyMode);
+        }
+
+        // ==================== Performance Monitoring ====================
+        if ('PerformanceObserver' in window) {
+            try {
+                const perfObserver = new PerformanceObserver((list) => {
+                    for (const entry of list.getEntries()) {
+                        if (entry.entryType === 'largest-contentful-paint') {
+                            console.log('LCP:', entry.startTime);
+                        }
+                    }
+                });
+                
+                perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+            } catch (e) {
+                // PerformanceObserver might not be supported
+            }
+        }
+
+        // ==================== Final Initialization ====================
+        console.log('🏦 محلل كشف الحساب الذكي - جاهز للاستخدام');
+    </script>
+</body>
+</html>
