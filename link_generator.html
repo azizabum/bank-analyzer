@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>محلل كشف الحساب الذكي | البنك الأهلي السعودي</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-green: #00a859;
+            --primary-dark: #007a3d;
+            --primary-light: #00c66e;
+            --secondary-blue: #1e3a5f;
+            --secondary-gold: #d4af37;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #7a7a7a;
+            --text-white: #ffffff;
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f7f4;
+            --success: #00a859;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.15);
+            --border-color: rgba(0, 168, 89, 0.2);
+        }
+
+        [data-theme="dark"] {
+            --primary-green: #00c66e;
+            --primary-dark: #00a859;
+            --primary-light: #00e07d;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #1f1f1f;
+            --bg-hover: #2a2a2a;
+            --success: #00e07d;
+            --danger: #ff4757;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.6);
+            --border-color: rgba(0, 198, 110, 0.3);
+        }
+
+        body {
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+            direction: rtl;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .theme-toggle .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-dark) 50%, var(--secondary-gold) 100%);
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--text-white);
+            margin: 0 auto 18px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .features {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-hover);
+            padding: 12px;
+            border-radius: 10px;
+            border-right: 3px solid var(--primary-green);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: var(--bg-hover);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            min-width: 28px;
+        }
+
+        .feature-text {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .generate-button {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            color: var(--text-white);
+            border: none;
+            padding: 16px 35px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .generate-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .generate-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .generate-button:active {
+            transform: translateY(0);
+        }
+
+        .generate-button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .loading {
+            display: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(0, 168, 89, 0.1);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-section {
+            display: none;
+            background: var(--bg-hover);
+            border: 2px solid var(--primary-green);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .result-title {
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .link-display {
+            background: var(--bg-secondary);
+            border: 2px solid var(--primary-green);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 15px 0;
+            word-break: break-all;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .copy-button {
+            background: var(--primary-green);
+            color: var(--text-white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .copy-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .copy-button:active {
+            transform: translateY(0);
+        }
+
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .share-button {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border: 2px solid transparent;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .share-button:hover {
+            background: var(--bg-secondary);
+            border-color: var(--primary-green);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .share-button .icon {
+            font-size: 1.5rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .warning-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #856404;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .warning-list li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 6px;
+            color: #856404;
+            line-height: 1.5;
+            font-size: 0.85rem;
+        }
+
+        .warning-list li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--warning);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .error-message, .success-message {
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background: rgba(220, 53, 69, 0.1);
+            border: 2px solid rgba(220, 53, 69, 0.3);
+            color: var(--danger);
+        }
+
+        .success-message {
+            background: rgba(0, 168, 89, 0.1);
+            border: 2px solid rgba(0, 168, 89, 0.3);
+            color: var(--success);
+        }
+
+        .bank-info {
+            background: var(--bg-hover);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .bank-logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .bank-description {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .stats-info {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-title {
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+            background: var(--bg-hover);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* تحسينات الموبايل */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+            
+            .theme-toggle {
+                padding: 8px 10px;
+                gap: 6px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .theme-toggle .icon {
+                font-size: 1.1rem;
+            }
+            
+            .theme-label {
+                display: none;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            .main-card {
+                padding: 25px 18px;
+                border-radius: 16px;
+                margin: 0;
+                box-shadow: var(--shadow-md);
+            }
+            
+            .logo {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .main-title {
+                font-size: 1.3rem;
+                margin-bottom: 6px;
+            }
+            
+            .subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 20px;
+                padding: 0 5px;
+            }
+            
+            .features {
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+            
+            .feature {
+                padding: 10px;
+                gap: 10px;
+            }
+            
+            .feature-icon {
+                font-size: 1.1rem;
+                min-width: 24px;
+            }
+            
+            .feature-text {
+                font-size: 0.85rem;
+            }
+            
+            .generate-button {
+                font-size: 1rem;
+                padding: 14px 25px;
+                margin-bottom: 12px;
+            }
+            
+            .result-section {
+                padding: 15px;
+                margin-top: 15px;
+            }
+            
+            .result-title {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .link-display {
+                padding: 10px;
+                font-size: 0.75rem;
+                margin: 12px 0;
+            }
+            
+            .copy-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+                margin: 3px;
+            }
+            
+            .share-options {
+                gap: 8px;
+                margin-top: 12px;
+            }
+            
+            .share-button {
+                padding: 10px;
+                font-size: 0.8rem;
+                gap: 4px;
+            }
+            
+            .share-button .icon {
+                font-size: 1.3rem;
+            }
+            
+            .warning-box {
+                padding: 12px;
+                margin-top: 15px;
+            }
+            
+            .warning-title {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+            
+            .warning-list li {
+                font-size: 0.8rem;
+                margin-bottom: 4px;
+                padding-right: 18px;
+            }
+            
+            .bank-info {
+                padding: 15px;
+                margin-top: 15px;
+            }
+            
+            .bank-logo-section {
+                font-size: 0.9rem;
+                gap: 8px;
+            }
+            
+            .bank-description {
+                font-size: 0.8rem;
+            }
+            
+            .error-message, .success-message {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                margin-top: 12px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+
+        /* تحسينات للأجهزة الصغيرة جداً */
+        @media (max-width: 380px) {
+            .main-card {
+                padding: 20px 15px;
+            }
+            
+            .main-title {
+                font-size: 1.2rem;
+            }
+            
+            .subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .share-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* منع التكبير */
+        @media (hover: none) and (pointer: coarse) {
+            body {
+                touch-action: pan-x pan-y;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- زر تبديل الوضع -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span class="icon" id="themeIcon">🌙</span>
+        <span class="theme-label" id="themeLabel">Dark Mode</span>
+    </button>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="logo">
+                <span>🏦</span>
+            </div>
+            <h1 class="main-title">محلل كشف الحساب الذكي</h1>
+            <p class="subtitle">إنشاء رابط آمن لتحليل كشف حسابك بتقنيات متقدمة</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-text">رابط آمن للاستخدام مرة واحدة فقط</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏰</div>
+                    <div class="feature-text">صالح لمدة 48 ساعة من الإنشاء</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-text">تصنيف ذكي للمعاملات المالية</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">محسن للجوال والأجهزة اللوحية</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🗑️</div>
+                    <div class="feature-text">حذف تلقائي للملفات بعد التحليل</div>
+                </div>
+            </div>
+
+            <!-- إحصائيات النظام -->
+            {% if system_info %}
+            <div class="stats-info">
+                <div class="stats-title">📊 إحصائيات النظام</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">{{ system_info.total_categories or 0 }}</div>
+                        <div class="stat-label">تصنيف رئيسي</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ system_info.total_subcategories or 0 }}</div>
+                        <div class="stat-label">تصنيف فرعي</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ system_info.learning_stats.learned_patterns_count or 0 }}</div>
+                        <div class="stat-label">نمط متعلم</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ system_info.usage_stats.total_analyses or 0 }}</div>
+                        <div class="stat-label">تحليل منجز</div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <button class="generate-button" onclick="generateLink()">
+                🔗 إنشاء رابط آمن جديد
+            </button>
+
+            <div class="loading" id="loadingSection">
+                <div class="spinner"></div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">جاري إنشاء رابط آمن...</p>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <div class="result-section" id="resultSection">
+                <div class="result-title">تم إنشاء الرابط بنجاح!</div>
+                <p style="margin-bottom: 12px; color: var(--text-secondary); font-size: 0.85rem;">
+                    يمكنك الآن استخدام هذا الرابط لتحليل كشف حسابك:
+                </p>
+                
+                <div class="link-display" id="generatedLink"></div>
+                
+                <div style="text-align: center;">
+                    <button class="copy-button" onclick="copyLink()">📋 نسخ الرابط</button>
+                    <button class="copy-button" onclick="openLink()" style="background: var(--secondary-blue);">🔗 فتح الرابط</button>
+                </div>
+
+                <div class="share-options">
+                    <button class="share-button" onclick="shareWhatsApp()">
+                        <span class="icon whatsapp">📱</span>
+                        <span>واتساب</span>
+                    </button>
+                    <button class="share-button" onclick="shareEmail()">
+                        <span class="icon email">📧</span>
+                        <span>إيميل</span>
+                    </button>
+                    <button class="share-button" onclick="shareTelegram()">
+                        <span class="icon telegram">✈️</span>
+                        <span>تيليجرام</span>
+                    </button>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-title">
+                        <span>⚠️</span>
+                        <span>تنبيهات مهمة</span>
+                    </div>
+                    <ul class="warning-list">
+                        <li>هذا الرابط يمكن استخدامه <strong>مرة واحدة فقط</strong></li>
+                        <li>ينتهي خلال <strong>48 ساعة</strong> من الإنشاء</li>
+                        <li>لا تشارك الرابط مع أشخاص غير موثوقين</li>
+                        <li>يتم حذف جميع الملفات تلقائياً بعد التحليل</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bank-info">
+                <div class="bank-logo-section">
+                    <span>🏛️</span>
+                    <span>البنك الأهلي السعودي</span>
+                </div>
+                <p class="bank-description">
+                    خدمة تحليل كشوف الحساب الذكية - مخصصة لعملاء البنك الأهلي
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLink = '';
+
+        // تحميل الثيم المحفوظ
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+            
+            // تأثير الظهور التدريجي
+            const elements = document.querySelectorAll('.feature');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(20px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.5s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateX(0)';
+                }, 100 * index);
+            });
+            
+            console.log('الصفحة جاهزة للعمل');
+            
+            // منع التكبير بالنقر المزدوج
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            const themeIcon = document.getElementById('themeIcon');
+            const themeLabel = document.getElementById('themeLabel');
+            
+            if (theme === 'dark') {
+                themeIcon.textContent = '☀️';
+                themeLabel.textContent = 'Light Mode';
+            } else {
+                themeIcon.textContent = '🌙';
+                themeLabel.textContent = 'Dark Mode';
+            }
+        }
+
+        async function generateLink() {
+            const button = document.querySelector('.generate-button');
+            const loading = document.getElementById('loadingSection');
+            const result = document.getElementById('resultSection');
+            const errorMsg = document.getElementById('errorMessage');
+            const successMsg = document.getElementById('successMessage');
+
+            // إخفاء الرسائل السابقة
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+            result.style.display = 'none';
+
+            // تعطيل الزر وإظهار التحميل
+            button.disabled = true;
+            loading.style.display = 'block';
+
+            try {
+                console.log('جاري إنشاء الرابط...');
+                
+                const response = await fetch('/generate-link', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        analysis_type: 'enhanced',
+                        max_files: 5
+                    })
+                });
+
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (data.success) {
+                    currentLink = data.link;
+                    document.getElementById('generatedLink').textContent = data.link;
+                    
+                    // إظهار قسم النتائج
+                    result.style.display = 'block';
+                    
+                    // تحديث رسالة النجاح
+                    if (data.external_url) {
+                        successMsg.textContent = '✅ تم إنشاء رابط خارجي قابل للمشاركة!';
+                    } else {
+                        successMsg.textContent = '✅ تم إنشاء الرابط بنجاح!';
+                    }
+                    
+                    successMsg.style.display = 'block';
+                    
+                    // تأثير الاهتزاز للتنبيه
+                    if (navigator.vibrate) {
+                        navigator.vibrate(200);
+                    }
+                    
+                    // التمرير إلى قسم النتائج
+                    setTimeout(() => {
+                        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                    
+                } else {
+                    throw new Error(data.error || 'فشل في إنشاء الرابط');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorMsg.textContent = 'خطأ في إنشاء الرابط: ' + error.message;
+                errorMsg.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+                button.disabled = false;
+            }
+        }
+
+        function copyLink() {
+            if (!currentLink) {
+                alert('لا يوجد رابط للنسخ');
+                return;
+            }
+
+            const copyText = async () => {
+                try {
+                    await navigator.clipboard.writeText(currentLink);
+                    return true;
+                } catch {
+                    // Fallback للأجهزة القديمة
+                    const textArea = document.createElement('textarea');
+                    textArea.value = currentLink;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    const result = document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    return result;
+                }
+            };
+
+            copyText().then(success => {
+                if (success) {
+                    const button = event.target;
+                    const originalText = button.textContent;
+                    const originalBg = button.style.background;
+                    
+                    button.textContent = '✅ تم النسخ!';
+                    button.style.background = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = originalBg;
+                    }, 2000);
+                    
+                    if (navigator.vibrate) {
+                        navigator.vibrate(100);
+                    }
+                }
+            });
+        }
+
+        function openLink() {
+            if (currentLink) {
+                window.open(currentLink, '_blank');
+            }
+        }
+
+        function shareWhatsApp() {
+            if (!currentLink) {
+                alert('لا يوجد رابط للمشاركة');
+                return;
+            }
+
+            const message = encodeURIComponent(`🏦 رابط تحليل كشف الحساب الذكي
+
+${currentLink}
+
+⚠️ يستخدم مرة واحدة فقط وصالح لمدة 48 ساعة
+
+📋 تعليمات الاستخدام:
+1. اضغط على الرابط
+2. ارفع كشف حسابك PDF
+3. احصل على تحليل ذكي فوري
+
+🔒 آمن تماماً - البنك الأهلي السعودي`);
+            
+            window.open(`https://wa.me/?text=${message}`, '_blank');
+        }
+
+        function shareEmail() {
+            if (!currentLink) {
+                alert('لا يوجد رابط للمشاركة');
+                return;
+            }
+
+            const subject = encodeURIComponent('رابط تحليل كشف الحساب الذكي');
+            const body = encodeURIComponent(`مرحباً،
+
+يمكنك استخدام هذا الرابط لتحليل كشف حسابك:
+
+${currentLink}
+
+تعليمات الاستخدام:
+1. اضغط على الرابط
+2. ارفع كشف حسابك بصيغة PDF
+3. احصل على تحليل ذكي وشامل
+
+ملاحظات مهمة:
+- يستخدم مرة واحدة فقط
+- صالح لمدة 48 ساعة
+- آمن ومحمي
+- يتم حذف الملفات تلقائياً
+
+خدمة مخصصة لعملاء البنك الأهلي السعودي`);
+            
+            window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+        }
+
+        function shareTelegram() {
+            if (!currentLink) {
+                alert('لا يوجد رابط للمشاركة');
+                return;
+            }
+
+            const message = encodeURIComponent(`🏦 رابط تحليل كشف الحساب الذكي
+
+⚠️ يستخدم مرة واحدة فقط وصالح لمدة 48 ساعة
+
+📋 اضغط على الرابط وارفع كشف حسابك للحصول على تحليل فوري`);
+            
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(currentLink)}&text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
